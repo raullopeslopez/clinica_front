@@ -30,6 +30,7 @@ export class ConsultasComponent implements OnInit {
   cargarConsultas() {
     this.listConsultas = this._consultaService.getConsulta();
     this.dataSource = new MatTableDataSource(this.listConsultas);
+    console.log(this.dataSource)
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

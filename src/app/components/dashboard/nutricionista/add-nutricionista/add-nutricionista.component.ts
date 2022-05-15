@@ -28,13 +28,15 @@ export class AddNutricionistaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addNutricionista() {
+ /* addNutricionista() {
     const nutricionista: Nutricionista = {
-      nutricionista: this.form.value.nutricionista,
+      id_nutricionista: this.form.value.nutricionista,
       nombre: this.form.value.nombre,
-      apellido: this.form.value.apellido,
-      edad: this.form.value.edad,
-      sexo: this.form.value.sexo
+      apellidos: this.form.value.apellido,
+      fecha_alta: this.form.value.fecha_alta,
+      dni: this.form.value.dni,
+      telefono: this.form.value.telefono,
+      sueldo: this.form.value.sueldo,
     }
 
     this._nutricionistaService.addNutricionista(nutricionista);
@@ -45,5 +47,5 @@ export class AddNutricionistaComponent implements OnInit {
       horizontalPosition: 'center',
       verticalPosition: 'bottom'
     })
-  }
+  }*/
 }

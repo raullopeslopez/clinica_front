@@ -3,7 +3,7 @@
     <span>Añadir Nutricionista</span>
   </mat-toolbar>
   <mat-card class="card">
-      <form [formGroup]="form" (ngSubmit)="addNutricionista()">
+      <form [formGroup]="form" > <!-- (ngSubmit)="addNutricionista()" -->
         <mat-grid-list cols="4" rowHeight="2:1">
             <mat-grid-tile [colspan]="1" [rowspan]="1" >
               <mat-form-field appearance="fill" class="ancho">

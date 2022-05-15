@@ -1,7 +1,9 @@
 export interface Nutricionista {
-    nutricionista: String,
+    idNutricionista: Number,
     nombre: String,
-    apellido: String,
-    edad: Number,
-    sexo: String
+    apellidos: String,
+    fechaAlta: Date,
+    dni: String,
+    telefono: Number,
+    sueldo: Number
 }

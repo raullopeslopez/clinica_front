@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -6,44 +7,44 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Nutricionista } from 'src/app/interfaces/nutricionista';
 import { NutricionistaService } from 'src/app/services/nutricionista.service';
 
-
 @Component({
   selector: 'app-nutricionista',
   templateUrl: './nutricionista.component.html',
   styleUrls: ['./nutricionista.component.css']
 })
+
 export class NutricionistaComponent implements OnInit {
   
   listNutricionistas: Nutricionista[] = [];
-
-  displayedColumns: string[] = ['nutricionista','nombre', 'apellido', 'edad', 'sexo', 'opciones'];
+  displayedColumns: string[] = ['idNutricionista','nombre', 'apellidos', 'fechaAlta', 'dni'
+                                ,'telefono', 'sueldo', 'opciones'];
+  
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private _nutricionistaService: NutricionistaService, private _snackBar: MatSnackBar) { }
+  constructor(private nutricionistaService: NutricionistaService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.cargarNutricionistas();
   }
 
   cargarNutricionistas() {
-    this.listNutricionistas = this._nutricionistaService.getNutricionista();
-    this.dataSource = new MatTableDataSource(this.listNutricionistas);
-  }
-  ngAfterViewInit() {
+    this.nutricionistaService.getAllNutricionistas().subscribe (response => {
+    this.listNutricionistas = response;
+    this.dataSource = new MatTableDataSource(response)
     this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    })
   }
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+  applyFilter($event: any) {
+    this.dataSource.filter = $event.target.value;
   }
-  eliminarNutricionista(index: number) {
+ /* eliminarNutricionista(index: number) {
    console.log(index);
 
-   this._nutricionistaService.eliminarNutricionista(index);
+   this.nutricionistaService.eliminarNutricionista(index);
    this.cargarNutricionistas();
 
    this._snackBar.open('Nutricionista eliminado con éxito', '', {
@@ -51,5 +52,5 @@ export class NutricionistaComponent implements OnInit {
     horizontalPosition: 'center',
     verticalPosition: 'bottom'
   })
-  }
+  }*/
 }
