@@ -1,0 +1,34 @@
+<div class="headerSeccion" *ngFor="let nutricionista of selectNutricionista">
+  <mat-toolbar>
+    <span>Nutricionista: {{nutricionista.nombre}} {{nutricionista.apellidos}}</span>
+    <div class="botonAdd"></div>
+  </mat-toolbar>
+  <table class="table">
+    <thead class="thead">
+      <tr>
+        <th>Id Nutricionista</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Fecha Nacimiento</th>
+        <th>Fecha Alta</th>
+        <th>Activo</th>
+        <th>DNI</th>
+        <th>Telefono</th>
+        <th>Sueldo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{nutricionista.idNutricionista}}</td>
+        <td>{{nutricionista.nombre}}</td>
+        <td>{{nutricionista.apellidos}}</td>
+        <td>{{nutricionista.fechaNacimiento}}</td>  
+        <td>{{nutricionista.fechaAlta}}</td>
+        <td>{{nutricionista.activo}}</td> 
+        <td>{{nutricionista.dni}}</td> 
+        <td>{{nutricionista.telefono}}</td>
+        <td>{{nutricionista.sueldo}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

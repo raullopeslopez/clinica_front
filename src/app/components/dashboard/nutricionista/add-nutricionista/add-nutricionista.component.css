@@ -1,14 +1,18 @@
-.card {
-    margin-top: 1%;
+.container {
+    margin-top: 2%;
+    margin-left: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
+ .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20%;
+}
 .ancho {
     width: 80%;
-}
-
-img {
-    width: 50%;
-    height: 60%;
 }
 
 .aceptarbtn {

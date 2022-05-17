@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // Modulos
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Angular material
 import { MatSliderModule } from '@angular/material/slider';
@@ -37,7 +37,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatPaginatorModule,
     MatSortModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    FormsModule
   ], 
   exports: [
     MatSliderModule,
@@ -54,7 +55,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatPaginatorModule,
     MatSortModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    FormsModule
   ]
 })
 export class SharedModulesModule { }

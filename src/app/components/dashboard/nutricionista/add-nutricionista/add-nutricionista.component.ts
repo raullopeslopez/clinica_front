@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Nutricionista } from 'src/app/interfaces/nutricionista';
+import { Nutricionista } from 'src/app/models/nutricionista';
 import { NutricionistaService } from 'src/app/services/nutricionista.service';
 
 @Component({
@@ -10,42 +10,39 @@ import { NutricionistaService } from 'src/app/services/nutricionista.service';
   templateUrl: './add-nutricionista.component.html',
   styleUrls: ['./add-nutricionista.component.css']
 })
-export class AddNutricionistaComponent implements OnInit {
+export class AddNutricionistaComponent implements OnInit{
 
-  form: FormGroup;
-  constructor(private fb: FormBuilder, 
-              private _nutricionistaService: NutricionistaService,
-              private router: Router,
-              private _snackBar: MatSnackBar) {
-    this.form = this.fb.group({
-      nutricionista: ['', Validators.required],
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required],
-      edad: ['', Validators.required],
-    })
-  }
+  newNutricionista: Nutricionista = new Nutricionista()
 
-  ngOnInit(): void {
-  }
-
- /* addNutricionista() {
-    const nutricionista: Nutricionista = {
-      id_nutricionista: this.form.value.nutricionista,
-      nombre: this.form.value.nombre,
-      apellidos: this.form.value.apellido,
-      fecha_alta: this.form.value.fecha_alta,
-      dni: this.form.value.dni,
-      telefono: this.form.value.telefono,
-      sueldo: this.form.value.sueldo,
-    }
-
-    this._nutricionistaService.addNutricionista(nutricionista);
-    this.router.navigate(['/dashboard/nutricionistas'])
-
-    this._snackBar.open('Nutricionista añadido con éxito', '', {
-      duration: 1500,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom'
-    })
-  }*/
-}
+  form: FormGroup
+   constructor(private fb: FormBuilder, 
+               private nutricionistaService: NutricionistaService,
+               private router: Router,
+               private _snackBar: MatSnackBar) {}
+ 
+   ngOnInit(): void {
+     this.form = this.fb.group({
+       idNutricionista: ['', Validators.required],
+       nombre: ['', Validators.required],
+       apellidos: ['', Validators.required],
+       fechaNacimiento:['', Validators.required],
+       fechaAlta: ['', Validators.required],
+       activo: ['', Validators.required],
+       dni: ['', Validators.required],
+       telefono: ['', Validators.required],
+       sueldo: ['', Validators.required],
+     });
+   }
+ 
+   postNutricionista (newNutricionista : Nutricionista){
+     console.log(newNutricionista)
+     this.nutricionistaService.postNutricionista(this.newNutricionista).subscribe ({
+       next: data => {
+         this.router.navigate(['/dashboard/nutricionistas'])
+       },
+       error: err => console.log ('ERROR: ', err)
+     })
+     console.log('NUTRICIONISTA: ' + JSON.stringify(this.newNutricionista))
+   }
+ 
+ }

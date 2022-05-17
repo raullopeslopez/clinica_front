@@ -1,43 +1,50 @@
 <div>
-  <mat-toolbar>
+  <mat-toolbar class="header">
     <span>Añadir Nutricionista</span>
   </mat-toolbar>
-  <mat-card class="card">
-      <form [formGroup]="form" > <!-- (ngSubmit)="addNutricionista()" -->
-        <mat-grid-list cols="4" rowHeight="2:1">
-            <mat-grid-tile [colspan]="1" [rowspan]="1" >
-              <mat-form-field appearance="fill" class="ancho">
-                <mat-label>Nutricionista</mat-label>
-                <input matInput autocomplete="off" formControlName="nutricionista">
-              </mat-form-field>
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="3" [rowspan]="5">
-              <img src="./assets/img/login_image.png" alt="imagen-perfil-nutricionista">
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="1" [rowspan]="1" >
-              <mat-form-field appearance="fill" class="ancho">
-                <mat-label>Nombre</mat-label>
-                <input matInput autocomplete="off" formControlName="nombre">
-              </mat-form-field>
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="1" [rowspan]="1">
-              <mat-form-field appearance="fill" class="ancho">
-                <mat-label>Apellido</mat-label>
-                <input matInput autocomplete="off" formControlName="apellido">
-              </mat-form-field>
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="1" [rowspan]="1">
-              <mat-form-field appearance="fill" class="ancho">
-                <mat-label>Edad</mat-label>
-                <input matInput autocomplete="off" formControlName="edad">
-              </mat-form-field>
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="1" [rowspan]="1">
-              <button type = "submit" [disabled] = "form.invalid" class = "aceptarbtn" mat-raised-button color="primary">Aceptar</button>
-              <button mat-raised-button >Volver</button>
-            </mat-grid-tile>
-           
-          </mat-grid-list>
-      </form>
-  </mat-card>
+  <div class="container">
+    <form [formGroup]="form" (ngSubmit)="postNutricionista(newNutricionista)">
+      <label>
+        <span>Id Nutricionista</span>
+        <input type="text" formControlName="idNutricionista">
+      </label>
+      <label>
+        <span>Nombre</span>
+        <input type="text" formControlName="nombre">
+      </label>
+      <label>
+        <span>Apellidos</span>
+        <input type="text" formControlName="apellidos">
+      </label>
+      <label>
+        <span>Fecha Nacimiento</span>
+        <input type="date" formControlName="fechaNacimiento">
+      </label>
+      <label>
+        <span>Fecha Alta</span>
+        <input type="date" formControlName="fechaAlta">
+      </label>
+      <label>
+        <span>Activo</span>
+        <input type="number" formControlName="activo">
+      </label>
+      <label>
+        <span>DNI</span>
+        <input type="number" formControlName="dni">
+      </label>
+      <label>
+        <span>Teléfono</span>
+        <input type="number" formControlName="telefono">
+      </label>
+      <label>
+        <span>Sueldo</span>
+        <input type="number" formControlName="sueldo">
+      </label>
+      <div class="buttons">
+        <button type="submit" [disabled]="form.invalid" class="aceptarbtn" mat-raised-button
+          color="primary">Aceptar</button>
+        <button mat-raised-button>Volver</button>
+      </div>
+    </form>
+  </div>
 </div>

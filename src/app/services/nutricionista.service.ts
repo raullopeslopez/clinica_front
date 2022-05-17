@@ -7,7 +7,9 @@ import {URLS_ADMINISTRADOR} from '../shared/constants';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept' 
   })
 };
 
@@ -19,48 +21,34 @@ export class NutricionistaService {
 
 listNutricionistas: Nutricionista[] = []
 
-  constructor(private http: HttpClient) { }
+constructor(private http: HttpClient) { }
 
-   getAllNutricionistas() : Observable<Nutricionista[]> {
-      const url = `${environment.URL_BASE}${URLS_ADMINISTRADOR.GET_ALL_NUTRICIONISTAS}`;
-      return this.http.get<Nutricionista[]>(url, httpOptions);
-  } 
-  
-  
+getAllNutricionistas() : Observable<Nutricionista[]> {
+   const url = `${environment.URL_BASE}${URLS_ADMINISTRADOR.GET_ALL_NUTRICIONISTAS}`;
+   return this.http.get<Nutricionista[]>(url, httpOptions);
+} 
 
-/*  getNutricionista(id_nutricionista: Number) : Observable<Object> {
-      const url = `${environment.URLS_ADMINISTRADOR}/${GET_ALL_NUTRICIONISTAS}/${id}';
-      return this.http.get(url, httpOptions);
- */ 
-
-/*  postNutricionista(nutricionista: Nutricionista) : Observable<Object>{
-      const url = `${environment.URLS_ADMINISTRADOR}/${POST_NUTRICIONISTA}';
-      return this.http.put<Nutricionista>(url, nutricionista, httpOptions);
- } 
-
-*/
-/*  putNutricionista(nutricionista: Nutricionista) : Observable<Object> {
-      const url = `${environment.URLS_ADMINISTRADOR}/${PUT_NUTRICIONISTA}';
-      return this.http.put(url, httpOptions);
+getNutricionista(idNutricionista: Number){
+   const url = `${environment.URL_BASE}${URLS_ADMINISTRADOR.GET_ALL_NUTRICIONISTAS}/${idNutricionista}`;
+   console.log ('URL: ' + url)
+   return this.http.get<Nutricionista>(url, httpOptions);
 }
 
-*/
-/*  deleteNutricionista(id_nutricionista: number) : Observable<Object>{} 
-      const url = `${environment.URLS_ADMINISTRADOR}/${DELETE_NUTRICIONISTA}/${id}';
-      return this.http.delete(url, httpOptions);
+postNutricionista(nutricionista: Nutricionista){
+   const url = `${environment.URL_BASE}${URLS_ADMINISTRADOR.POST_NUTRICIONISTA}`;
+   return this.http.post(url, nutricionista, httpOptions);
+} 
+
+
+putNutricionista(nutricionista: Nutricionista) : Observable<Object> {
+   const url = `${environment.URL_BASE}${URLS_ADMINISTRADOR.PUT_NUTRICIONISTA}`;
+   return this.http.put(url, nutricionista, httpOptions);
 }
-*/
 
 
-  /*getNutricionista() {
-    return this.listNutricionistas.slice();
-  }
+deleteNutricionista(idNutricionista: number) : Observable<Object>{ 
+   const url = `${environment.URL_BASE}${URLS_ADMINISTRADOR.DELETE_NUTRICIONISTA}/${idNutricionista}`;
+   return this.http.delete(url, {responseType: 'text'});
+}
 
-  eliminarNutricionista(index: number) {
-    this.listNutricionistas.splice(index, 1);
-  }
-
-  addNutricionista(nutricionista: Nutricionista) {
-    this.listNutricionistas.unshift(nutricionista);
-  }*/
 }

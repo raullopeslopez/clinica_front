@@ -12,6 +12,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AddNutricionistaComponent } from './nutricionista/add-nutricionista/add-nutricionista.component';
 import { AddConsultaComponent } from './consultas/add-consulta/add-consulta.component';
 import { AddFacturaComponent } from './facturacion/add-factura/add-factura.component';
+import { DetailNutricionistaComponent } from './nutricionista/detail-nutricionista/detail-nutricionista.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { AddFacturaComponent } from './facturacion/add-factura/add-factura.compo
     NavbarComponent,
     AddNutricionistaComponent,
     AddConsultaComponent,
-    AddFacturaComponent
+    AddFacturaComponent,
+    DetailNutricionistaComponent
   ],
   imports: [
     CommonModule,
