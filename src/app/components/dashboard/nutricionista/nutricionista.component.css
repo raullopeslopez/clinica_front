@@ -12,6 +12,10 @@ table {
     font-size: 14px;
     width: 100%;
   }
+<<<<<<< HEAD
   .distribucionHeader{
+=======
+  .botonAdd{
+>>>>>>> d692c596356868c2e7493ab63bd6a840fa45bad2
     flex: 1 1 auto;
   }

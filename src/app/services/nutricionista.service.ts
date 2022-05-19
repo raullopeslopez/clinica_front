@@ -13,9 +13,14 @@ const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
+<<<<<<< HEAD
     'Access-Control-Allow-Headers':
       'Origin, X-Requested-With, Content-Type, Accept',
   }),
+=======
+    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept' 
+  })
+>>>>>>> d692c596356868c2e7493ab63bd6a840fa45bad2
 };
 
 @Injectable({
@@ -26,6 +31,7 @@ export class NutricionistaService {
 
   constructor(private http: HttpClient) {}
 
+<<<<<<< HEAD
   getAllNutricionistas(): Observable<Nutricionista[]> {
     const url = `${environment.URL_BASE}${URLS_ADMINISTRADOR.GET_ALL_NUTRICIONISTAS}`;
     return this.http.get<Nutricionista[]>(url, httpOptions);
@@ -52,4 +58,38 @@ export class NutricionistaService {
     const url = `${environment.URL_BASE}${URLS_ADMINISTRADOR.DELETE_NUTRICIONISTA}/${idNutricionista}`;
     return this.http.delete(url, { responseType: 'text' });
   }
+=======
+listNutricionistas: Nutricionista[] = []
+
+constructor(private http: HttpClient) { }
+
+getAllNutricionistas() : Observable<Nutricionista[]> {
+   const url = `${environment.URL_BASE}${URLS_ADMINISTRADOR.GET_ALL_NUTRICIONISTAS}`;
+   return this.http.get<Nutricionista[]>(url, httpOptions);
+} 
+
+getNutricionista(idNutricionista: Number){
+   const url = `${environment.URL_BASE}${URLS_ADMINISTRADOR.GET_ALL_NUTRICIONISTAS}/${idNutricionista}`;
+   console.log ('URL: ' + url)
+   return this.http.get<Nutricionista>(url, httpOptions);
+}
+
+postNutricionista(nutricionista: Nutricionista){
+   const url = `${environment.URL_BASE}${URLS_ADMINISTRADOR.POST_NUTRICIONISTA}`;
+   return this.http.post(url, nutricionista, httpOptions);
+} 
+
+
+putNutricionista(nutricionista: Nutricionista) : Observable<Object> {
+   const url = `${environment.URL_BASE}${URLS_ADMINISTRADOR.PUT_NUTRICIONISTA}`;
+   return this.http.put(url, nutricionista, httpOptions);
+}
+
+
+deleteNutricionista(idNutricionista: number) : Observable<Object>{ 
+   const url = `${environment.URL_BASE}${URLS_ADMINISTRADOR.DELETE_NUTRICIONISTA}/${idNutricionista}`;
+   return this.http.delete(url, {responseType: 'text'});
+}
+
+>>>>>>> d692c596356868c2e7493ab63bd6a840fa45bad2
 }

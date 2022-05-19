@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .formContainer {
   margin-top: 5%;
   display: flex;
@@ -33,6 +34,25 @@ td {
   justify-content: center;
 }
 
+=======
+.container {
+    margin-top: 2%;
+    margin-left: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20%;
+}
+.ancho {
+    width: 80%;
+}
+
+>>>>>>> d692c596356868c2e7493ab63bd6a840fa45bad2
 .aceptarbtn {
   margin-right: 2%;
 }

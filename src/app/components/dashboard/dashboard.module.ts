@@ -13,8 +13,11 @@ import { AddNutricionistaComponent } from './nutricionista/add-nutricionista/add
 import { AddConsultaComponent } from './consultas/add-consulta/add-consulta.component';
 import { AddFacturaComponent } from './facturacion/add-factura/add-factura.component';
 import { DetailNutricionistaComponent } from './nutricionista/detail-nutricionista/detail-nutricionista.component';
+<<<<<<< HEAD
 import { EditNutricionistaComponent } from './nutricionista/edit-nutricionista/edit-nutricionista.component';
 import { FacturacionNutricionistaMensualComponent } from './facturacion/facturacion-nutricionista-mensual/facturacion-nutricionista-mensual.component';
+=======
+>>>>>>> d692c596356868c2e7493ab63bd6a840fa45bad2
 
 
 @NgModule({
@@ -28,9 +31,13 @@ import { FacturacionNutricionistaMensualComponent } from './facturacion/facturac
     AddNutricionistaComponent,
     AddConsultaComponent,
     AddFacturaComponent,
+<<<<<<< HEAD
     DetailNutricionistaComponent,
     EditNutricionistaComponent,
     FacturacionNutricionistaMensualComponent
+=======
+    DetailNutricionistaComponent
+>>>>>>> d692c596356868c2e7493ab63bd6a840fa45bad2
   ],
   imports: [
     CommonModule,

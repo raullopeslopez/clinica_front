@@ -9,7 +9,10 @@ import { FacturacionComponent } from './facturacion/facturacion.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { AddNutricionistaComponent } from './nutricionista/add-nutricionista/add-nutricionista.component';
 import { DetailNutricionistaComponent } from './nutricionista/detail-nutricionista/detail-nutricionista.component';
+<<<<<<< HEAD
 import { EditNutricionistaComponent } from './nutricionista/edit-nutricionista/edit-nutricionista.component';
+=======
+>>>>>>> d692c596356868c2e7493ab63bd6a840fa45bad2
 
 import { NutricionistaComponent } from './nutricionista/nutricionista.component';
 
@@ -22,7 +25,10 @@ const routes: Routes = [
     { path:'nutricionistas', component:NutricionistaComponent},
     { path:'add-nutricionista', component:AddNutricionistaComponent},
     { path:'detail-nutricionista/:idNutricionista', component:DetailNutricionistaComponent},
+<<<<<<< HEAD
     { path:'edit-nutricionista/:idNutricionista', component:EditNutricionistaComponent},
+=======
+>>>>>>> d692c596356868c2e7493ab63bd6a840fa45bad2
     { path:'add-consulta', component:AddConsultaComponent},
     { path:'add-factura', component:AddFacturaComponent},
     { path:'facturacion-nutricionista-mensual', component:FacturacionNutricionistaMensualComponent},

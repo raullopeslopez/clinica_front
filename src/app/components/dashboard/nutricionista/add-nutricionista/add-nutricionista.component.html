@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="headerSeccion">
   <mat-toolbar>
     <span>Nutricionistas</span>
@@ -80,3 +81,55 @@
   </div>
 
 </div>
+=======
+<div>
+  <mat-toolbar class="header">
+    <span>Añadir Nutricionista</span>
+  </mat-toolbar>
+  <div class="container">
+    <form [formGroup]="form" (ngSubmit)="postNutricionista(newNutricionista)">
+      <label>
+        <span>Id Nutricionista</span>
+        <input type="text" formControlName="idNutricionista">
+      </label>
+      <label>
+        <span>Nombre</span>
+        <input type="text" formControlName="nombre">
+      </label>
+      <label>
+        <span>Apellidos</span>
+        <input type="text" formControlName="apellidos">
+      </label>
+      <label>
+        <span>Fecha Nacimiento</span>
+        <input type="date" formControlName="fechaNacimiento">
+      </label>
+      <label>
+        <span>Fecha Alta</span>
+        <input type="date" formControlName="fechaAlta">
+      </label>
+      <label>
+        <span>Activo</span>
+        <input type="number" formControlName="activo">
+      </label>
+      <label>
+        <span>DNI</span>
+        <input type="number" formControlName="dni">
+      </label>
+      <label>
+        <span>Teléfono</span>
+        <input type="number" formControlName="telefono">
+      </label>
+      <label>
+        <span>Sueldo</span>
+        <input type="number" formControlName="sueldo">
+      </label>
+      <div class="buttons">
+        <button type="submit" [disabled]="form.invalid" class="aceptarbtn" mat-raised-button
+          color="primary">Aceptar</button>
+        <button mat-raised-button>Volver</button>
+      </div>
+    </form>
+  </div>
+</div>
+>>>>>>> d692c596356868c2e7493ab63bd6a840fa45bad2
