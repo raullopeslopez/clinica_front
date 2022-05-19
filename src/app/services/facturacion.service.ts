@@ -1,34 +1,34 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Facturacion } from '../interfaces/facturacion';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { FacturacionNutricionista } from '../models/facturacion-nutricionista';
+import { URLS_ADMINISTRADOR } from '../shared/constants';
 
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept' 
+  })
+};
 @Injectable({
   providedIn: 'root'
 })
 export class FacturacionService {
 
-  listFacturas: Facturacion[] = [
-    {factura: "geza", nombre: "Gonzalo", apellido: "Eza", edad: 30, sexo: "M"},
-    {factura: "geza", nombre: "Gonzalo", apellido: "Eza", edad: 30, sexo: "M"},
-    {factura: "geza", nombre: "Gonzalo", apellido: "Eza", edad: 30, sexo: "M"},
-    {factura: "geza", nombre: "Gonzalo", apellido: "Eza", edad: 30, sexo: "M"},
-    {factura: "geza", nombre: "Gonzalo", apellido: "Eza", edad: 30, sexo: "M"},
-    {factura: "geza", nombre: "Gonzalo", apellido: "Eza", edad: 30, sexo: "M"},
-    {factura: "geza", nombre: "Gonzalo", apellido: "Eza", edad: 30, sexo: "M"},
-    {factura: "geza", nombre: "Gonzalo", apellido: "Eza", edad: 30, sexo: "F"},
-    {factura: "geza", nombre: "Gonzalo", apellido: "Eza", edad: 30, sexo: "F"},
+  listFacturas: FacturacionNutricionista[] = [];
+  constructor(private http: HttpClient) { }
 
-  ];
-  constructor() { }
-
-  getFacturacion() {
-    return this.listFacturas.slice();
+  getFacturacionMensual() : Observable<FacturacionNutricionista> {
+    const url = `${environment.URL_BASE}${URLS_ADMINISTRADOR.GET_FACTURACION_MENSUAL}`;
+    return this.http.get<FacturacionNutricionista>(url, httpOptions);
+    
   }
-
-  eliminarFactura(index: number) {
-    this.listFacturas.splice(index, 1);
+  getFacturacionDiaria() : Observable<FacturacionNutricionista> {
+    const url = `${environment.URL_BASE}${URLS_ADMINISTRADOR.GET_FACTURACION_DIARIA}`;
+    return this.http.get<FacturacionNutricionista>(url, httpOptions);
   }
-
-  addFactura(factura: Facturacion) {
-    this.listFacturas.unshift(factura);
-  }
+  
 }

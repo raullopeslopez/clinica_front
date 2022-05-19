@@ -1,9 +1,6 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { Facturacion } from 'src/app/interfaces/facturacion';
 import { FacturacionService } from 'src/app/services/facturacion.service';
 
 @Component({
@@ -13,44 +10,59 @@ import { FacturacionService } from 'src/app/services/facturacion.service';
 })
 export class FacturacionComponent implements OnInit {
 
-  listFacturas: Facturacion[] = [];
+  facturacionGlobal: any 
+  facturacionNutricionista: any
+  facturacionDiaria: any
 
-  displayedColumns: string[] = ['factura','nombre', 'apellido', 'edad', 'sexo', 'opciones'];
-  dataSource!: MatTableDataSource<any>;
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
-  constructor(private _facturaService: FacturacionService, private _snackBar: MatSnackBar) { }
-
-  
+  constructor(private facturaService: FacturacionService, private _snackBar: MatSnackBar,
+    private http:HttpClient) { }
 
   ngOnInit(): void {
-    this.cargarFacturas();
+
+    this.cargarFacturacionGlobalFechas();
+    this.cargarFacturacionNutricionista();
+    this.cargarFacturacionDiaria();
   }
 
-  cargarFacturas() {
-    this.listFacturas = this._facturaService.getFacturacion();
-    this.dataSource = new MatTableDataSource(this.listFacturas);
-  }
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-  eliminarFactura(index: number) {
-   console.log(index);
 
-   this._facturaService.eliminarFactura(index);
-   this.cargarFacturas();
+  cargarFacturacionGlobalFechas() {
+    let fxmin = '1900-01-01'
+    let fxmax = '2023-01-01'
+    let params = new HttpParams()
+    .set('fechaMin', fxmin)
+    .set('fechaMax', fxmax)
 
-   this._snackBar.open('Factura eliminada con éxito', '', {
-    duration: 1500,
-    horizontalPosition: 'center',
-    verticalPosition: 'bottom'
-  })
+    this.http.get(`http://localhost:8080/nutricionistas/facturacion`, {params: params}).subscribe({
+          next: data => {
+            // Global saca pormenorizada por nutri entre fechas
+            this.facturacionGlobal = data
+            console.log('GLOBALFECHAS', JSON.stringify(this.facturacionGlobal))
+          },
+          error: err => console.log("ERROR: ", err) 
+    })
   }
+
+  cargarFacturacionNutricionista() {
+    this.http.get(`http://localhost:8080/nutricionistas/facturacion/1`).subscribe({
+          next: data => {
+            // Tiene en cuenta que la facturacion es del mes del 1 hasta el dia actual
+            this.facturacionNutricionista = data
+            this.facturacionNutricionista = Array.of(this.facturacionNutricionista)
+            console.log('NUTRICIONISTA', JSON.stringify(this.facturacionNutricionista))
+          },
+          error: err => console.log("ERROR: ", err) 
+    })
+  }
+
+  cargarFacturacionDiaria() { 
+    this.facturaService.getFacturacionDiaria().subscribe ({
+      next: data => {
+        this.facturacionDiaria = data
+        console.log('DIARIA', JSON.stringify(this.facturacionDiaria))
+     },
+      error: err => console.log("ERROR: ", err) 
+    })
+ }
+
 }
+

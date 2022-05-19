@@ -1,4 +1,8 @@
-.table {
+.distribucionHeader{
+  flex: 1 1 auto;
+}
+
+table {
     font-family: Roboto, "Helvetica Neue", sans-serif;
     width: 100%;
     margin-top: 2%;
@@ -9,7 +13,7 @@
     border-color: grey;
     background: inherit;
   }
-  
+
   .thead {
     font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif;
     letter-spacing: normal;
@@ -18,7 +22,7 @@
     vertical-align: middle;
     border-color: inherit;
   }
-  
+
   th {
     background: inherit;
     border-bottom-width: 1px;
@@ -40,5 +44,11 @@
     border-bottom-style: solid;
   }
   
-  
+  .buttonContainer {
+    display: flex;
+    align-content: center;
+    justify-content: start;
+    margin-top: 2%;
+  }
+
     

@@ -37,7 +37,7 @@ export class AddFacturaComponent implements OnInit {
       sexo: this.form.value.sexo
     }
 
-    this._facturacionService.addFactura(factura);
+    //this._facturacionService.addFactura(factura);
     this.router.navigate(['/dashboard/consultas'])
 
     this._snackBar.open('Factura añadida con éxito', '', {
