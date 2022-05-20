@@ -12,6 +12,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AddNutricionistaComponent } from './nutricionista/add-nutricionista/add-nutricionista.component';
 import { AddConsultaComponent } from './consultas/add-consulta/add-consulta.component';
 import { AddFacturaComponent } from './facturacion/add-factura/add-factura.component';
+import { InfoConsultaComponent } from './consultas/info-consulta/info-consulta.component';
+import { InfoConsultaFechaComponent } from './consultas/info-consulta-fecha/info-consulta-fecha.component';
+import { EditConsultaComponent } from './consultas/edit-consulta/edit-consulta.component';
 
 
 @NgModule({
@@ -24,7 +27,10 @@ import { AddFacturaComponent } from './facturacion/add-factura/add-factura.compo
     NavbarComponent,
     AddNutricionistaComponent,
     AddConsultaComponent,
-    AddFacturaComponent
+    AddFacturaComponent,
+    InfoConsultaComponent,
+    InfoConsultaFechaComponent,
+    EditConsultaComponent
   ],
   imports: [
     CommonModule,

@@ -10,22 +10,23 @@ import { AddNutricionistaComponent } from './nutricionista/add-nutricionista/add
 import { NutricionistaComponent } from './nutricionista/nutricionista.component';
 
 const routes: Routes = [
-  {path: '', component: DashboardComponent, children:
-  [
-    { path:'', component:InicioComponent},
-    { path:'consultas', component: ConsultasComponent},
-    { path:'facturacion', component: FacturacionComponent},
-    { path:'nutricionistas', component:NutricionistaComponent},
-    { path:'add-nutricionista', component:AddNutricionistaComponent},
-    { path:'add-consulta', component:AddConsultaComponent},
-    { path:'add-factura', component:AddFacturaComponent},
-  ]
- }
-  
+  {
+    path: '',
+    component: DashboardComponent,
+    children: [
+      { path: '', component: InicioComponent },
+      { path: 'consultas', component: ConsultasComponent },
+      { path: 'facturacion', component: FacturacionComponent },
+      { path: 'nutricionistas', component: NutricionistaComponent },
+      { path: 'add-nutricionista', component: AddNutricionistaComponent },
+      { path: 'add-consulta', component: AddConsultaComponent },
+      { path: 'add-factura', component: AddFacturaComponent },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DashboardRoutingModule { }
+export class DashboardRoutingModule {}

@@ -1,9 +1,9 @@
-export interface Nutricionista {
-    idNutricionista: Number,
-    nombre: String,
-    apellidos: String,
-    fechaAlta: Date,
-    dni: String,
-    telefono: Number,
-    sueldo: Number
+export class Nutricionista {
+  idNutricionista!: number;
+  nombre!: string;
+  apellidos!: string;
+  fechaAlta!: string;
+  dni!: string;
+  telefono!: number;
+  sueldo!: number;
 }
