@@ -27,22 +27,22 @@ export class AddConsultaComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  addConsulta() {
-    const consulta: Consulta = {
-      consulta: this.form.value.consulta,
-      nombre: this.form.value.nombre,
-      apellido: this.form.value.apellido,
-      edad: this.form.value.edad,
-      sexo: this.form.value.sexo
-    }
+addConsulta() {
+   const consulta: Consulta = {
+   consulta: this.form.value.consulta,
+   nombre: this.form.value.nombre,
+   apellido: this.form.value.apellido,
+   edad: this.form.value.edad,
+   sexo: this.form.value.sexo
+   }
 
-    this._consultaService.addConsulta(consulta);
-    this.router.navigate(['/dashboard/consultas'])
+  this._consultaService.addConsulta(consulta);
+  this.router.navigate(['/dashboard/consultas'])
 
-    this._snackBar.open('Consulta añadida con éxito', '', {
-      duration: 1500,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom'
-    })
+  this._snackBar.open('Consulta añadida con éxito', '', {
+     duration: 1500,
+     horizontalPosition: 'center',
+     verticalPosition: 'bottom'
+   })
   }
 }

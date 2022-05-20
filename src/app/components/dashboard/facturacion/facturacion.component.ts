@@ -1,10 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatSort } from '@angular/material/sort';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Facturacion } from 'src/app/interfaces/facturacion';
-import { FacturacionService } from 'src/app/services/facturacion.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-facturacion',
@@ -13,44 +11,57 @@ import { FacturacionService } from 'src/app/services/facturacion.service';
 })
 export class FacturacionComponent implements OnInit {
 
-  listFacturas: Facturacion[] = [];
+  facturacionGlobal: any 
 
-  displayedColumns: string[] = ['factura','nombre', 'apellido', 'edad', 'sexo', 'opciones'];
+  param = new HttpParams()
+  fechaMin : any
+  fechaMax : any
+
   dataSource!: MatTableDataSource<any>;
+  displayedColumns: string[] = [
+    'nutricionista',
+    'minutos_trabajados',
+    'facturacion_bruta',
+    'facturacion_neta',
+    'facturacion_bruta_hora',
+    'facturacion_neta_hora',
+    'numero_consultas',
+    'opciones'];
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  constructor(private http:HttpClient,
+    private router: Router) { }
 
-  constructor(private _facturaService: FacturacionService, private _snackBar: MatSnackBar) { }
+  ngOnInit(): void {
+    this.getFacturacionGlobal(this.fechaMin, this.fechaMax);
+  }
+
+  getNutricionista(idNutricionista: Number) {
+    this.router.navigate(['/dashboard/facturacion-nutricionista-mensual', idNutricionista])
+    console.log('ID NUTRI: ' + idNutricionista)
+  }
+
+  getFacturacionGlobal(fMin: any, fMax:any) {
+    this.fechaMin = fMin
+    this.fechaMax = fMax
+    this.param = new HttpParams()
+    .set('fechaMin', this.fechaMin)
+    .set('fechaMax', this.fechaMax)
+    console.log('FECHAS: ' + this.param)
+    this.http.get(`http://localhost:8080/gestion/facturacion`, {params: this.param}).subscribe({
+        next: data => {
+        // Global saca pormenorizada por nutri entre fechas
+        this.facturacionGlobal = data
+        this.dataSource = new MatTableDataSource(this.facturacionGlobal)
+        console.log('AAA: ' + this.dataSource)
+        console.log('GLOBALFECHAS', JSON.stringify(this.facturacionGlobal))
+            },
+            error: err => console.log("ERROR: ", err) 
+     })
+  }
+  }
 
   
 
-  ngOnInit(): void {
-    this.cargarFacturas();
-  }
 
-  cargarFacturas() {
-    this.listFacturas = this._facturaService.getFacturacion();
-    this.dataSource = new MatTableDataSource(this.listFacturas);
-  }
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-  eliminarFactura(index: number) {
-   console.log(index);
 
-   this._facturaService.eliminarFactura(index);
-   this.cargarFacturas();
 
-   this._snackBar.open('Factura eliminada con éxito', '', {
-    duration: 1500,
-    horizontalPosition: 'center',
-    verticalPosition: 'bottom'
-  })
-  }
-}

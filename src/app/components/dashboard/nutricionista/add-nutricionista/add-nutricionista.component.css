@@ -1,16 +1,38 @@
-.card {
-    margin-top: 1%;
+.formContainer {
+  margin-top: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.ancho {
-    width: 80%;
+.form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
 }
 
-img {
-    width: 50%;
-    height: 60%;
+.form-full-width {
+  width: 100%;
+}
+
+td {
+  padding-right: 8px;
+}
+
+.icon {
+  font-size: 17px;
+}
+
+.preffix {
+  font-size: 13px;
+}
+
+.buttonContainer {
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
 .aceptarbtn {
-    margin-right: 5%;
+  margin-right: 2%;
 }

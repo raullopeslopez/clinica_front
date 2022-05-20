@@ -1,8 +1,9 @@
 <div class="headerSeccion">
   <mat-toolbar>
     <span>Consultas</span>
-    <div class="botonAdd"></div>
-    <button mat-raised-button color="primary" routerLink="/dashboard/add-consulta" >Añadir</button>    
+    <div class="botonAdd">
+      <button mat-raised-button color="primary" routerLink="/dashboard/add-consulta" >Añadir</button>    
+    </div>    
   </mat-toolbar>
 
   <div *ngIf="listConsultas.length > 0">

@@ -1,0 +1,14 @@
+.distribucionHeader{
+  flex: 1 1 auto;
+}
+
+table {
+  width: 100%;
+}
+
+.buttonContainer {
+  display: flex;
+  align-content: center;
+  justify-content: start;
+  margin-top: 2%;
+}

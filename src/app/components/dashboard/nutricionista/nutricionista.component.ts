@@ -1,9 +1,5 @@
-import { ThisReceiver } from '@angular/compiler';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 import { Nutricionista } from 'src/app/interfaces/nutricionista';
 import { NutricionistaService } from 'src/app/services/nutricionista.service';
 
@@ -16,15 +12,16 @@ import { NutricionistaService } from 'src/app/services/nutricionista.service';
 export class NutricionistaComponent implements OnInit {
   
   listNutricionistas: Nutricionista[] = [];
-  displayedColumns: string[] = ['idNutricionista','nombre', 'apellidos', 'fechaAlta', 'dni'
-                                ,'telefono', 'sueldo', 'opciones'];
+  displayedColumns: string[] = ['idNutricionista',
+                                'nombre', 
+                                'apellidos', 
+                                'telefono',  
+                                'opciones'];
   
-  dataSource!: MatTableDataSource<any>;
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
-  constructor(private nutricionistaService: NutricionistaService, private _snackBar: MatSnackBar) { }
+  constructor(private nutricionistaService: NutricionistaService, 
+              private router: Router, 
+            ) {}
 
   ngOnInit(): void {
     this.cargarNutricionistas();
@@ -33,24 +30,26 @@ export class NutricionistaComponent implements OnInit {
   cargarNutricionistas() {
     this.nutricionistaService.getAllNutricionistas().subscribe (response => {
     this.listNutricionistas = response;
-    this.dataSource = new MatTableDataSource(response)
-    this.dataSource.paginator = this.paginator;
     })
   }
-
-  applyFilter($event: any) {
-    this.dataSource.filter = $event.target.value;
+  
+  getNutricionista(idNutricionista: Number) {
+    this.router.navigate(['/dashboard/detail-nutricionista', idNutricionista])
   }
- /* eliminarNutricionista(index: number) {
-   console.log(index);
 
-   this.nutricionistaService.eliminarNutricionista(index);
-   this.cargarNutricionistas();
+  editNutricionista(idNutricionista: Number) {
+    this.router.navigate(['/dashboard/edit-nutricionista', idNutricionista])
+  }
 
-   this._snackBar.open('Nutricionista eliminado con éxito', '', {
-    duration: 1500,
-    horizontalPosition: 'center',
-    verticalPosition: 'bottom'
-  })
-  }*/
+  eliminarNutricionista(idNutricionista : number) {
+    this.nutricionistaService.deleteNutricionista(idNutricionista).subscribe ({
+      next: response => {
+        this.cargarNutricionistas()
+      },
+      error: err => {
+        if (err.status === 200)
+        this.cargarNutricionistas()
+        console.log ('ERROR: ', err)}
+    })
+  }
 }

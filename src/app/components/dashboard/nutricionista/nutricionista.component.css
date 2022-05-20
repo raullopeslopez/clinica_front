@@ -12,7 +12,6 @@ table {
     font-size: 14px;
     width: 100%;
   }
-
-  .botonAdd{
+  .distribucionHeader{
     flex: 1 1 auto;
   }
