@@ -35,14 +35,32 @@
       <ng-container matColumnDef="opciones">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let nutricionista" style="text-align: center;">
+<<<<<<< HEAD
           <a class="pointer" (click)="getNutricionista(nutricionista.idNutricionista)"  matTooltip="Ver detalle"> 
+=======
+<<<<<<< HEAD
+          <a class="pointer" (click)="getNutricionista(nutricionista.idNutricionista)"  matTooltip="Ver detalle"> 
+=======
+          <a class="pointer" (click)="getNutricionista(nutricionista.idNutricionista)" matTooltip="Ver detalle" > <!-- (click)="getNutricionista(nutricionista.idNutricionista)" -->
+>>>>>>> d692c596356868c2e7493ab63bd6a840fa45bad2
+>>>>>>> 60e95e9b6e9c63591b124d480fbad0747fb0efc2
             <mat-icon >search</mat-icon>
           </a>
           <a class="pointer" (click)="editNutricionista(nutricionista.idNutricionista)" matTooltip="Editar información"> 
             <mat-icon>edit</mat-icon>
           </a>
+<<<<<<< HEAD
           <a class="pointer" (click)="eliminarNutricionista(nutricionista.idNutricionista)" matTooltip="Eliminar nutricionista">
             <mat-icon >delete</mat-icon>
+=======
+<<<<<<< HEAD
+          <a class="pointer" (click)="eliminarNutricionista(nutricionista.idNutricionista)" matTooltip="Eliminar nutricionista">
+            <mat-icon >delete</mat-icon>
+=======
+          <a class="pointer"  matTooltip="Eliminar nutricionista">
+            <mat-icon>delete</mat-icon>
+>>>>>>> d692c596356868c2e7493ab63bd6a840fa45bad2
+>>>>>>> 60e95e9b6e9c63591b124d480fbad0747fb0efc2
           </a>
         </td>
       </ng-container>

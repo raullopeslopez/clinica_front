@@ -1,4 +1,8 @@
 import { Component, OnInit} from '@angular/core';
+<<<<<<< HEAD
+=======
+import { MatSnackBar } from '@angular/material/snack-bar';
+>>>>>>> 60e95e9b6e9c63591b124d480fbad0747fb0efc2
 import { Router } from '@angular/router';
 import { Nutricionista } from 'src/app/interfaces/nutricionista';
 import { NutricionistaService } from 'src/app/services/nutricionista.service';
@@ -12,6 +16,7 @@ import { NutricionistaService } from 'src/app/services/nutricionista.service';
 export class NutricionistaComponent implements OnInit {
   
   listNutricionistas: Nutricionista[] = [];
+<<<<<<< HEAD
   displayedColumns: string[] = ['idNutricionista',
                                 'nombre', 
                                 'apellidos', 
@@ -22,6 +27,12 @@ export class NutricionistaComponent implements OnInit {
   constructor(private nutricionistaService: NutricionistaService, 
               private router: Router, 
             ) {}
+=======
+  displayedColumns: string[] = ['idNutricionista','nombre', 'apellidos', 'telefono',  'opciones'];
+  
+
+  constructor(private nutricionistaService: NutricionistaService, private router: Router, private _snackBar: MatSnackBar) { }
+>>>>>>> 60e95e9b6e9c63591b124d480fbad0747fb0efc2
 
   ngOnInit(): void {
     this.cargarNutricionistas();

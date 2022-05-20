@@ -1,7 +1,12 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 60e95e9b6e9c63591b124d480fbad0747fb0efc2
 .distribucionHeader{
   flex: 1 1 auto;
 }
 
+<<<<<<< HEAD
 table {
   width: 100%;
 }
@@ -12,3 +17,61 @@ table {
   justify-content: start;
   margin-top: 2%;
 }
+=======
+=======
+>>>>>>> d692c596356868c2e7493ab63bd6a840fa45bad2
+table {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    width: 100%;
+    margin-top: 2%;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 0;
+    border-color: grey;
+    background: inherit;
+  }
+
+  .thead {
+    font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    padding-left: 24px;
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+  }
+
+  th {
+    background: inherit;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    color: rgba(0,0,0,.54);
+    padding: 1.8%;
+  }
+  
+  td {
+    display: table-cell;
+    text-align: center;
+    padding: 2%;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    border-spacing: 0;
+    color: rgba(0,0,0,.87);
+    font-size: 14px;
+    border-bottom-color: rgba(0,0,0,.12);
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+  }
+<<<<<<< HEAD
+  
+  .buttonContainer {
+    display: flex;
+    align-content: center;
+    justify-content: start;
+    margin-top: 2%;
+  }
+=======
+
+>>>>>>> d692c596356868c2e7493ab63bd6a840fa45bad2
+
+    
+>>>>>>> 60e95e9b6e9c63591b124d480fbad0747fb0efc2

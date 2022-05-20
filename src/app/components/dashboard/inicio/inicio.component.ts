@@ -1,5 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { MatTableDataSource } from '@angular/material/table';
+=======
+>>>>>>> 60e95e9b6e9c63591b124d480fbad0747fb0efc2
 import { FacturacionService } from 'src/app/services/facturacion.service';
 
 @Component({
@@ -9,6 +13,7 @@ import { FacturacionService } from 'src/app/services/facturacion.service';
 })
 export class InicioComponent implements OnInit {
 
+<<<<<<< HEAD
   facturacionMensual: any;
   facturacionDiaria: any;
 
@@ -25,6 +30,11 @@ export class InicioComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   dataSourceDiario!: MatTableDataSource<any>;
 
+=======
+
+  facturacionMensual: any;
+  facturacionDiaria: any;
+>>>>>>> 60e95e9b6e9c63591b124d480fbad0747fb0efc2
   constructor( private facturaService: FacturacionService) { }
 
   ngOnInit(): void {
@@ -36,8 +46,12 @@ export class InicioComponent implements OnInit {
     this.facturaService.getFacturacionMensual().subscribe ({
       next: data => {
         this.facturacionMensual = data
+<<<<<<< HEAD
         this.dataSource = new MatTableDataSource(this.facturacionMensual)
         console.log('MENSUAL: ' + JSON.stringify(this.facturacionMensual)) 
+=======
+       console.log('MENSUAL: ' + JSON.stringify(this.facturacionMensual)) 
+>>>>>>> 60e95e9b6e9c63591b124d480fbad0747fb0efc2
      },
       error: err => console.log("ERROR: ", err) 
     })
@@ -47,7 +61,10 @@ export class InicioComponent implements OnInit {
   this.facturaService.getFacturacionDiaria().subscribe ({
     next: data => {
       this.facturacionDiaria = data
+<<<<<<< HEAD
       this.dataSourceDiario = new MatTableDataSource(this.facturacionDiaria)
+=======
+>>>>>>> 60e95e9b6e9c63591b124d480fbad0747fb0efc2
       console.log('DIARIA', JSON.stringify(this.facturacionDiaria))
    },
     error: err => console.log("ERROR: ", err) 
